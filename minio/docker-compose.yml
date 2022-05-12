@@ -1,0 +1,16 @@
+version: "3.1"
+
+services:
+  minio:
+    image: minio/minio:latest
+    container_name: minio
+    restart: always
+    ports:
+      - 19000:9000
+      - 19001:9001
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ACCESS_KEY: username
+      MINIO_SECRET_KEY: password
+    volumes:
+      - ./data:/data
